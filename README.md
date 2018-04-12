@@ -11,6 +11,8 @@
 
 -포함된 객체 클래스는 VO, DTO처럼 생각하자
 
+-컨테이너 역할클래스도 생성자, getter, setter가 있는데, 여기서의 getter, setter은 주로 컨테이너 자체의 size()
+
 -객체 클래스라면 생성자(보통 이름자체에 강제조건에 대한 힌트가 있음), getter,setter를 생각하자
 
 -조건문인 경우, 반복되는 코드보다 차이나는 코드를 이해해야 핵심 이해 가능
@@ -72,4 +74,4 @@ ex) 스택, 큐는 쉽게했는데, LinkedList 구현에서 막힌 이유- Linke
 
 -> 출력 void printList
 
--> 사이즈
+-> 사이즈(getter & setter)
