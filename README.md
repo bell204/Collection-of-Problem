@@ -1,1 +1,4 @@
-# Knowledge-for-Java-beginner
+# 프로그래밍 하다 막힌 부분 기록해두기 (2018.4.12~
+
+자료구조
+1
