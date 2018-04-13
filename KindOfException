@@ -10,8 +10,65 @@ NullPointerException 정확한 의미만 알면 즉시 원인을 분석할 수 �
 
 
 <예외 처리의 중요성>
-예외처리를 제대로 작성한 코드라면 
-거의 대부분의 문제는 스택트레이스 안에 답이 있음.
+예외처리를 제대로 작성한 코드라면 거의 대부분의 문제는 스택트레이스 안에 답이 있음.
+문제의 진정한 원인은 윗쪽의 트레이스가 아니라 'Caused By:'로 표시되는 널포인터 예외 부분임.
+
+예를들어 널포인터 예외가 찍힌 부분부터 아래쪽으로 단 세줄만 해석해보면 예외 이해 가능.
+
+Caused by: java.lang.NullPointerException
+     at com.mycompany.service.impl.PortalManagerImpl.deleteMenuItem(PortalManagerImpl.java:603)
+     at com.mycompany.service.impl.PortalManagerImpl.deletePortal(PortalManagerImpl.java:358)
+
+이를 정확하게 'com.mycompany.service.impl.PortalManagerImpl' 클래스의 
+'deletePortal' 메소드 358라인에서 같은 클래스의 'deleteMenuItem'메소드를 호출했는데 
+해당 메소드 603번 째 줄에서 널포인터 예외가 발생했다'라고 해석할 수 있는 지원자가 많지 않았습니다.
+
+이런 로그를 보고 곧바로 해당 클래스의 603번 째 줄을 찾아갈 수 있다면,
+'내가 뭘 잘못 쳐서 안되는 거지?' 하는 식으로 막연한 고민으로 시간을 허비하지 않게 됨.
+스택트레이스를 정확히 아는 것은 디버깅과 관련한 개발생산성에 큰 도움
+
+그리고 'PortalManagerImpl' 클래스의 관련된 소스는 다음과 같습니다:
+
+if (item == null) {
+    throw new NullArgumentException("item");
+}
+
+//중간 생략
+List<PortalMenu> children = getMenuItems(item.getPortal().getId(), item.getId()); // 603번째 줄
+
+for (PortalMenu child : children) {
+    deleteMenuItem(child);
+ }
+ 
+ 모든 경우의 수는,
+
+children
+item
+item.getPortal()
+item.getPortal().getId()
+item.getId()
+이렇게 다섯 가지가 전부입니다.
+
+이 중 적어도 두 가지, 즉 2번 혹은 3번으로 가능성을 바로 좁히지 못한다면 그것은 널포인터 예외의 의미를 정확하게 파악하지 못하고 있기 때문입니다.
+널포인터 예외는 단순하게 변수에 널값이 들어가서 생기는 오류가 아닙니다. 
+
+널포인터 예외는 
+명확하게 객체의 널레퍼런스에 대해 메소드 호출이나 필드 참조 등의 작업을 했을 때 발생하는 문제란 것을 이해한다면 
+이런 문제는 곧바로 원인을 좁힐 수 있어야 합니다.
 
 
+<답이 안 되는 4가지 경우>
+즉, 1번의 경우처럼 단순히 변수에 널값을 할당하는 것만으로는 절대로 널포인터 예외가 날 수 없습니다. 
+
+그리고 만일 4 번 'item.getPortal().getId()'이나 5번 'item.getId()'이 널이라면 
+이는 널 레퍼런스에 대한 호출이 아니라 널값을 'getMenuItems'라는 메소드의 인자로 넘기는 것 뿐이기 때문에 
+역시 널포인터 예외의 원인이 될 수 없습니다.
+
+물론 'getMenuItem' 메소드 안에서 해당 인자에 대한 널체크 없이 값을 사용하다가 예외가 날 수도 있겠지만 
+이 경우엔 절대로 트레이스 상에 굵은 글자로 표시된 603번 째에서 예외를 뿌리지 않습니다.
+
+그렇다면 남은 가능성은 2번 'item'이 널이거나 3번 'item.getPortal()'이 널인 경우뿐인데, 
+'item' 변수는 위에서 널체크를 하기 때문에 603번 째 줄에서 절대로 널값을 가질 수 없습니다. 
+
+그렇기 때문에 답은 3번이 되는 것입니다.
 
