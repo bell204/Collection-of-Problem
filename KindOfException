@@ -1,6 +1,6 @@
 예외 종류 정리 (예외볼 때마다 자바api 사이트 또는 구글링해서 예외의 의미에 대해 이해하기)
 
-1 NullPointerException
+1 NullPointerException (출처-https://okky.kr/article/338405)
 
 NullPointerException 정확한 의미만 알면 즉시 원인을 분석할 수 있다
 상당한 설계 차원의 지식이 필요한 문제가 예외처리.
