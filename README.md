@@ -77,3 +77,9 @@ ex) 스택, 큐는 쉽게했는데, LinkedList 구현에서 막힌 이유- Linke
 -> 출력 void printList
 
 -> 사이즈(getter & setter)
+
+<h2> 알고리즘 </h2>
+
+기본 알고리즘은 일단 조건문 & 반복문임
+
+근데 이게 눈에 안 들어오는 이유는?
