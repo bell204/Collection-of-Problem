@@ -1,5 +1,7 @@
-<h1>예외 종류 정리</h1>
+예외 종류 정리
 
-<h4>NullPointerException</h4>
+1 NullPointerException
 
-NullPointerException이란
+NullPointerException 정확한 의미만 알면 즉시 원인을 분석할 수 있다
+
+
