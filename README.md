@@ -35,7 +35,7 @@
 
 <h2> API와 JSON </h2>
 
-<h2> Jquery 구조 분석 </h2>
+<h2> DOM 댓글</h2>
 
 
 <hr>
