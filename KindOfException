@@ -1,5 +1,7 @@
 예외 종류 정리 (예외볼 때마다 자바api 사이트 또는 구글링해서 예외의 의미에 대해 이해하기)
 
+0 부적합한 열 유형 -SQL에 값이 제대로 주입X인 경우-#{ }- 여기가 비거나 안맞음
+
 1 NullPointerException (출처-https://okky.kr/article/338405)
 
 NullPointerException 정확한 의미만 알면 즉시 원인을 분석할 수 있다
