@@ -15,7 +15,7 @@ setTimeout(function(){ // 지연시간 뒤에 실행될 코드 넣기// }, delay
 일정 시간마다 반복실행하는 함수
 
 ex)
-var intervalId= setInterval(setText, 1000); // 1초마다 setText를 실행시킴. 
+var intervalId= setInterval(setText, 1000); // 1초 지난 후에 setText를 실행시킴. 
 
 <h1> Q3 ClearInterval </h1>
 
@@ -55,7 +55,19 @@ ex)
 
 <h1> Q8 text vs html 함수 </h1>
 
-ex)
+ex) text 함수 예제  
+
+$('#countDown').text('start'); // text안의 값으로 값을 변경시켜라. (text 함수는 텍스트만 인자로 함)
+
+ex) html 함수 예제
+
+$('#cardTable').html('<td id="card' +i+'"><img src="images/'+img+'"><span>?</span></td>';
+
+// html 함수는 html 태그도 인자로 함.
+
+<h1> Q9 Random 함수 </h1>
+
+Math.floor( ) ->소수점 이하를 버림한다. 
 
 
 
