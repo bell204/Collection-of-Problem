@@ -39,4 +39,22 @@ var img = cards.splice(idx, 1);
 
 <h1> Q6 Find 함수 </h1> 
 
+ex) 
+
+find(요소) / find(선택자) / find ($객체)
+
+-> var openCardSrc2 = $(this).find('img') // 이미지 태그를 찾아라.
+
+<h1> Q7 Attr 함수 </h1>
+
+ex)
+
+-> var openCardSrc2 = $(this).find('img').attr('src'); // 이미지 태그의 src 속성의 값을 openCardSrc2에 저장해라.
+
+<h1> Q8 text, html 함수 </h1>
+
+ex)
+
+
+
 
