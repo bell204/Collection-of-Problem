@@ -21,3 +21,8 @@ var intervalId= setInterval(setText, 1000); // 1초마다 setText를 실행시�
 
 ex) 
 clearInterval(intervalId);
+
+
+<h1> Q4 사용자가 입력하는 것은 이벤트임 </h1>
+
+이벤트가 발생했을 때 변경된 상태가 변수에 저장되어야 함. 
